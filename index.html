@@ -299,6 +299,35 @@
             margin-right: 10px;
         }
 
+        /* Kontakt sekcia */
+        .contact-section {
+            padding: 60px 20px;
+            background: var(--main-black);
+            color: var(--white);
+            text-align: center;
+            animation: fadeInSection 1s ease-out;
+        }
+
+        .contact-section h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px var(--highlight-color);
+        }
+
+        .contact-button {
+            background-color: var(--accent-color);
+            padding: 4px 8px;
+            color: var(--white);
+            font-size: 1.0rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-button:hover {
+            background-color: #ff0066;
+        }
+
         footer {
             background: var(--main-black);
             color: var(--white);
@@ -320,7 +349,7 @@
     <!-- Sekcia O nás -->
     <section class="section">
         <h2>O nás</h2>
-        <p>Wheedstudio je tím kreatívnych grafikov a video strihačov. Máme prax robení grafika a strihača pre umelcov, content creatorov atď.. už od roku 2021, od vtedy máme stovky spokojných zákazníkov. Preto neváhajte nám napísať :) </p>
+        <p>Wheedstudio je tím grafikov a video strihačov. Máme prax robení grafika a strihača pre umelcov, content creatorov atď.. už od roku 2021, od vtedy sme mali stovky spokojných zákazníkov. Preto neváhajte nám napísať :) </p>
     </section>
 
     <!-- Galéria -->
@@ -336,28 +365,34 @@
 
            <img src="project9.jpg" alt="Project 69" onclick="openModal('project9.jpg')">
 
-          <img src="project10.jpg" alt="Project 10" onclick="openModal('project10.jpg')">
+          <img src="project10.jpg" alt="Project 6" onclick="openModal('project10.jpg')">  
     </section>
 
-    <!-- Video sekcia -->
+    <!-- Video -->
     <section class="video-section">
-        <h2>Naša zbierka</h2>
-        <iframe src="https://www.youtube.com/embed/UoQzMoPUyE8" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h2>Video na YouTube</h2>
+        <iframe src="https://www.youtube.com/embed/UoQzMoPUyE8" allowfullscreen></iframe>
     </section>
 
-    <!-- Instagram sekcia -->
+    <!-- Instagram -->
     <section class="instagram-section">
-        <h2>Viac referencií tu</h2>
-        <a href="https://www.instagram.com/wheedstudio?igsh=d2Q2bXhtbXJsZ2lo" class="instagram-link" target="_blank">
-            <img src="instagram-icon.png" class="instagram-logo" alt="Instagram logo">
+        <h2>Navštívte nás na Instagrame</h2>
+        <a href="https://www.instagram.com/wheedstudio" class="instagram-link">
+            <img src="instagram.png" alt="Instagram Logo" class="instagram-logo">
             @wheedstudio
         </a>
     </section>
 
+    <!-- Kontakt -->
+    <section class="contact-section">
+        <h2>Kontaktujte nás</h2>
+        <p>Máte záujem o spoluprácu? Napíšte nám na email: <a href="mailto:wheedstudio@gmail.com" class="contact-button">Kontaktovať</a></p>
+    </section>
+
     <!-- Modal pre obrázky -->
-    <div id="myModal" class="modal" onclick="closeModal()">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImg">
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="img01">
     </div>
 
     <!-- Footer -->
@@ -366,15 +401,16 @@
     </footer>
 
     <script>
-        // Funkcia pre otvorenie modal okna
-        function openModal(imgSrc) {
-            document.getElementById("myModal").style.display = "block";
-            document.getElementById("modalImg").src = imgSrc;
+        function openModal(image) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("img01");
+            modal.style.display = "block";
+            modalImg.src = image;
         }
 
-        // Funkcia pre zavretie modal okna
         function closeModal() {
-            document.getElementById("myModal").style.display = "none";
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
         }
     </script>
 </body>
