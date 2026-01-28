@@ -1,420 +1,336 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wheedstudio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --main-green: #00ff88;
-            --main-black: #121212;
-            --highlight-color: #a0ff99;
-            --accent-color: #ff0077;
-            --white: #ffffff;
-            --background-gradient: linear-gradient(45deg, rgba(0, 255, 136, 0.8), rgba(0, 0, 0, 0.7));
-            --font-main: 'Poppins', sans-serif;
-            --font-headline: 'Montserrat', sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WheedStudio – Creative Agency</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-        body {
-            font-family: var(--font-main);
-            background: var(--main-black);
-            color: var(--white);
-            overflow-x: hidden;
-            line-height: 1.6;
-            text-align: center;
-        }
+<style>
+:root{
+  --green:#00ff88;
+  --green2:#4dffb3;
+  --green3:#9affd1;
+  --dark:#040705;
+  --glass:rgba(14,21,18,.7);
+}
 
-        /* Animácie pri načítaní stránky */
-        header {
-            background: var(--background-gradient);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            position: relative;
-            animation: fadeInHeader 1.5s ease-out;
-        }
+*{box-sizing:border-box}
 
-        @keyframes fadeInHeader {
-            0% {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+body{
+  margin:0;
+  font-family:Poppins,sans-serif;
+  background:var(--dark);
+  color:white;
+  overflow-x:hidden;
+}
 
-        /* Textové animácie */
-        header h1 {
-            font-family: var(--font-headline);
-            font-size: 8vw;
-            color: var(--main-green);
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            text-shadow: 0 0 25px var(--highlight-color), 0 0 35px var(--highlight-color);
-            animation: textGlow 2s ease-in-out infinite alternate;
-        }
+/* ===== DYNAMIC BACKGROUND ===== */
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  background:linear-gradient(120deg,#020402,#040705,#020402);
+}
 
-        @keyframes textGlow {
-            0% {
-                text-shadow: 0 0 15px var(--highlight-color), 0 0 30px var(--highlight-color);
-            }
-            100% {
-                text-shadow: 0 0 40px var(--highlight-color), 0 0 80px var(--highlight-color);
-            }
-        }
+.blob{
+  position:absolute;
+  width:420px;
+  height:420px;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.6;
+  animation:float 20s infinite alternate ease-in-out;
+}
 
-        /* Parallax efekt pre pozadie */
-        .parallax {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background-image: url('background.jpg');
-            background-attachment: fixed;
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-            animation: parallaxEffect 15s linear infinite;
-        }
+.blob.one{
+  background:var(--green);
+  top:10%; left:5%;
+}
+.blob.two{
+  background:var(--green2);
+  top:60%; left:60%;
+  animation-duration:26s;
+}
+.blob.three{
+  background:var(--green3);
+  top:30%; left:75%;
+  animation-duration:30s;
+}
 
-        @keyframes parallaxEffect {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(50%);
-            }
-        }
+@keyframes float{
+  from{transform:translate(0,0)}
+  to{transform:translate(120px,-100px)}
+}
 
-        /* Sekcia O nás */
-        .section {
-            padding: 80px 20px;
-            background: var(--main-black);
-            position: relative;
-            animation: fadeInSection 1s ease-out;
-        }
+/* ===== REVEAL ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(50px);
+  transition:1.1s cubic-bezier(.16,1,.3,1);
+}
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
 
-        @keyframes fadeInSection {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+/* ===== HERO ===== */
+.hero{
+  padding:120px 20px 90px;
+  text-align:center;
+}
 
-        .section h2 {
-            color: var(--main-green);
-            font-size: 4rem;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            text-shadow: 0 0 15px var(--highlight-color);
-            animation: slideIn 1s ease-out;
-        }
+.hero h1{
+  font-size:clamp(3.2rem,7vw,5rem);
+  font-weight:800;
+  background:linear-gradient(135deg,var(--green),var(--green3));
+  -webkit-background-clip:text;
+  color:transparent;
+  animation:pulse 4s infinite;
+}
 
-        @keyframes slideIn {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(0);
-            }
-        }
+@keyframes pulse{
+  0%,100%{filter:drop-shadow(0 0 0 transparent)}
+  50%{filter:drop-shadow(0 0 25px rgba(0,255,136,.6))}
+}
 
-        .section p {
-            font-size: 1.5rem;
-            color: var(--white);
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0;
-            animation: fadeInText 2s ease-in-out forwards;
-        }
+.hero p{
+  max-width:680px;
+  margin:20px auto 60px;
+  opacity:.85;
+  font-size:1.1rem;
+}
 
-        @keyframes fadeInText {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
+/* ===== STATS ===== */
+.stats{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:28px;
+}
 
-        /* Galéria s animáciami */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-            justify-content: center;
-            animation: galleryAppear 1s ease-out;
-        }
+.stat{
+  min-width:210px;
+  background:var(--glass);
+  border:1px solid rgba(0,255,136,.35);
+  backdrop-filter:blur(14px);
+  border-radius:22px;
+  padding:30px 36px;
+  transition:.45s;
+}
 
-        @keyframes galleryAppear {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.stat:hover{
+  transform:translateY(-10px) scale(1.05);
+  box-shadow:0 25px 50px rgba(0,255,136,.35);
+}
 
-        .gallery img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 20px;
-            transition: transform 0.5s ease-in-out, box-shadow 0.5s ease, filter 0.3s ease;
-            cursor: pointer;
-            border: 3px solid transparent;
-            background: rgba(0, 0, 0, 0.3);
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
-        }
+.stat .num{
+  font-size:2.9rem;
+  font-weight:800;
+  color:var(--green);
+}
 
-        .gallery img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 30px var(--highlight-color);
-            filter: brightness(1.3);
-        }
+.stat span{
+  opacity:.8;
+}
 
-        /* Modal pre obrázky */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.9);
-            animation: fadeInModal 1s ease;
-        }
+/* ===== SECTIONS ===== */
+section{
+  padding:110px 20px;
+}
 
-        @keyframes fadeInModal {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
+.title{
+  text-align:center;
+  font-size:2.6rem;
+  margin-bottom:14px;
+}
 
-        .modal-content {
-            margin: 10% auto;
-            display: block;
-            max-width: 80%;
-            max-height: 80%;
-            animation: zoomIn 0.5s ease-out;
-        }
+.sub{
+  text-align:center;
+  max-width:760px;
+  margin:0 auto 60px;
+  opacity:.8;
+  font-size:1.05rem;
+}
 
-        @keyframes zoomIn {
-            0% {
-                transform: scale(0.7);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
+/* ===== ARTICLE ===== */
+.article{
+  max-width:900px;
+  margin:auto;
+  background:var(--glass);
+  border:1px solid rgba(0,255,136,.3);
+  border-radius:30px;
+  padding:50px;
+  backdrop-filter:blur(14px);
+}
 
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+.article h3{
+  color:var(--green);
+  margin-bottom:14px;
+}
 
-        .close:hover,
-        .close:focus {
-            color: var(--highlight-color);
-            text-decoration: none;
-            cursor: pointer;
-        }
+.article p{
+  line-height:1.7;
+  margin-bottom:18px;
+  opacity:.9;
+}
 
-        /* Video sekcia */
-        .video-section {
-            background: var(--main-black);
-            color: var(--white);
-            padding: 100px 20px;
-            text-align: center;
-            animation: fadeInSection 1s ease-out;
-        }
+/* ===== INSTAGRAM ===== */
+.ig-wrapper{
+  max-width:950px;
+  margin:auto;
+  border-radius:30px;
+  overflow:hidden;
+  border:1px solid rgba(0,255,136,.35);
+  box-shadow:0 30px 60px rgba(0,255,136,.15);
+  transition:.5s;
+}
+.ig-wrapper:hover{
+  transform:scale(1.03);
+}
 
-        .video-section h2 {
-            font-size: 3.5rem;
-            margin-bottom: 30px;
-            text-shadow: 0 0 10px var(--highlight-color);
-        }
+/* ===== CONTACT ===== */
+.contact{
+  text-align:center;
+}
 
-        iframe {
-            width: 80%;
-            height: 500px;
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 0 10px var(--highlight-color);
-        }
+.contact a{
+  display:inline-block;
+  margin-top:35px;
+  padding:20px 52px;
+  background:linear-gradient(135deg,var(--green),var(--green2),var(--green3));
+  color:black;
+  font-weight:800;
+  border-radius:18px;
+  text-decoration:none;
+  transition:.4s;
+}
 
-        /* Instagram sekcia */
-        .instagram-section {
-            background: var(--main-black);
-            color: var(--white);
-            padding: 40px 20px;
-            text-align: center;
-            animation: fadeInSection 1s ease-out;
-        }
+.contact a:hover{
+  transform:translateY(-8px) scale(1.08);
+  box-shadow:0 25px 60px rgba(0,255,136,.55);
+}
 
-        .instagram-link {
-            font-size: 2rem;
-            text-decoration: none;
-            color: var(--white);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 20px;
-            animation: fadeInText 1.5s ease-in-out forwards;
-        }
-
-        .instagram-logo {
-            width: 40px;
-            margin-right: 10px;
-        }
-
-        /* Kontakt sekcia */
-        .contact-section {
-            padding: 60px 20px;
-            background: var(--main-black);
-            color: var(--white);
-            text-align: center;
-            animation: fadeInSection 1s ease-out;
-        }
-
-        .contact-section h2 {
-            font-size: 3rem;
-            margin-bottom: 30px;
-            text-shadow: 0 0 10px var(--highlight-color);
-        }
-
-        .contact-button {
-            background-color: var(--accent-color);
-            padding: 4px 8px;
-            color: var(--white);
-            font-size: 1.0rem;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .contact-button:hover {
-            background-color: #ff0066;
-        }
-
-        footer {
-            background: var(--main-black);
-            color: var(--white);
-            padding: 30px 20px;
-            font-size: 1.2rem;
-            text-align: center;
-        }
-    </style>
+/* ===== MOBILE ===== */
+@media(max-width:600px){
+  .stat{min-width:95%}
+  .article{padding:32px}
+}
+</style>
 </head>
+
 <body>
-    <!-- Parallax -->
-    <div class="parallax"></div>
 
-    <!-- Hlavná sekcia -->
-    <header>
-        <h1>Wheedstudio</h1>
-    </header>
+<div class="bg">
+  <div class="blob one"></div>
+  <div class="blob two"></div>
+  <div class="blob three"></div>
+</div>
 
-    <!-- Sekcia O nás -->
-    <section class="section">
-        <h2>O nás</h2>
-        <p>Wheedstudio je tím grafikov a video strihačov. Máme prax robení grafika a strihača pre umelcov, content creatorov atď.. už od roku 2021, od vtedy sme mali stovky spokojných zákazníkov. Preto neváhajte nám napísať :) </p>
-    </section>
+<!-- HERO -->
+<div class="hero reveal">
+  <h1>WheedStudio</h1>
+  <p>
+    Kreatívna grafická agentúra, ktorá spája moderný dizajn, digitálnu identitu
+    a vizuálny storytelling pre značky, ktoré chcú rásť a vyčnievať.
+  </p>
 
-    <!-- Galéria -->
-    <section class="gallery">
-        <img src="project1.jpg" alt="Project 1" onclick="openModal('project1.jpg')">
-        <img src="project2.jpg" alt="Project 2" onclick="openModal('project2.jpg')">
-        <img src="project3.jpg" alt="Project 3" onclick="openModal('project3.jpg')">
-        <img src="project4.jpg" alt="Project 4" onclick="openModal('project4.jpg')">
-        <img src="project5.jpg" alt="Project 5" onclick="openModal('project5.jpg')">
-        <img src="project6.jpg" alt="Project 6" onclick="openModal('project6.jpg')">
-         <img src="project7.jpg" alt="Project 67" onclick="openModal('project7.jpg')">
-          <img src="project8.jpg" alt="Project 8" onclick="openModal('project8.jpg')">
-
-           <img src="project9.jpg" alt="Project 69" onclick="openModal('project9.jpg')">
-
-          <img src="project10.jpg" alt="Project 6" onclick="openModal('project10.jpg')">  
-            <img src="project11.jpg" alt="Project 6" onclick="openModal('project11.jpg')">  
-                <img src="project12.jpg" alt="Project 6" onclick="openModal('project12.jpg')">  
-                    <img src="project13.jpg" alt="Project 6" onclick="openModal('project13.jpg')">  
-    </section>
-
-    <!-- Video -->
-    <section class="video-section">
-        <h2>Našá Charita !</h2> 
-        <iframe src="https://www.instagram.com/reel/DD4hK8LI-wL/?igsh=MWRieXRxZ3hleWdjYg== allowfullscreen></iframe>
-    </section>
-
-    <!-- Instagram -->
-    <section class="instagram-section">
-        <h2>Navštívte nás na Instagrame</h2>
-        <a href="https://www.instagram.com/wheedstudio" class="instagram-link">
-            <img src="instagram.png" alt="Instagram Logo" class="instagram-logo">
-            @wheedstudio
-        </a>
-    </section>
-
-    <!-- Kontakt -->
-    <section class="contact-section">
-        <h2>Kontaktujte nás</h2>
-        <p>Máte záujem o spoluprácu? Napíšte nám na email: <a href="mailto:wheedstudio@gmail.com" class="contact-button">Kontaktovať</a></p>
-    </section>
-
-    <!-- Modal pre obrázky -->
-    <div id="myModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="img01">
+  <div class="stats">
+    <div class="stat">
+      <div class="num" id="clients">0</div>
+      <span>Klientov</span>
     </div>
+    <div class="stat">
+      <div class="num" id="projects">0</div>
+      <span>Projektov</span>
+    </div>
+    <div class="stat">
+      <div class="num" id="views">0</div>
+      <span>Zobrazení</span>
+    </div>
+  </div>
+</div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Wheedstudio. Všetky práva vyhradené.</p>
-    </footer>
+<!-- ARTICLE -->
+<section class="reveal">
+  <h2 class="title">Martin Balog</h2>
+  <p class="sub">Zakladateľ a kreatívny riaditeľ WheedStudio</p>
 
-    <script>
-        function openModal(image) {
-            var modal = document.getElementById("myModal");
-            var modalImg = document.getElementById("img01");
-            modal.style.display = "block";
-            modalImg.src = image;
-        }
+  <div class="article">
+    <h3>Príbeh WheedStudio</h3>
+    <p>
+      Martin Balog sa grafickému dizajnu začal venovať už vo veľmi mladom veku.
+      To, čo začalo ako osobná vášeň pre vizuál a digitálnu tvorbu, sa postupne
+      vyvinulo do značky WheedStudio, modernej kreatívnej agentúry.
+    </p>
+    <p>
+      Jeho cieľom nebolo len „robiť pekné veci“, ale vytvárať vizuálnu identitu,
+      ktorá má emóciu, energiu a jasný charakter. WheedStudio dnes spolupracuje
+      s rôznymi značkami, tvorcami a projektmi na Slovensku aj v zahraničí.
+    </p>
+    <p>
+      Martinov rukopis je charakteristický čistým dizajnom, výraznými farbami
+      a dôrazom na detail. Každý projekt berie ako príležitosť posunúť značku
+      o úroveň vyššie, vizuálne aj strategicky.
+    </p>
+  </div>
+</section>
 
-        function closeModal() {
-            var modal = document.getElementById("myModal");
-            modal.style.display = "none";
-        }
-    </script>
+<!-- PORTFOLIO -->
+<section class="reveal">
+  <h2 class="title">Portfólio</h2>
+  <p class="sub"> Instagram feed @wheedstudio</p>
+
+  <div class="ig-wrapper">
+    <iframe 
+      src="https://www.instagram.com/wheedstudio/embed"
+      width="100%"
+      height="600"
+      frameborder="0"
+      scrolling="no">
+    </iframe>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact reveal">
+  <h2 class="title">Spolupráca</h2>
+  <p class="sub">
+    Máte projekt, nápad alebo značku, ktorú chcete posunúť na vyšší level?
+    Ozvite sa a vytvorme niečo výnimočné.
+  </p>
+  <a href="mailto:wheedstudio@gmail.com">Kontaktovať WheedStudio</a>
+</section>
+
+<script>
+/* COUNT UP */
+function count(id,end){
+  let el=document.getElementById(id);
+  let val=0;
+  let step=end/140;
+  let i=setInterval(()=>{
+    val+=step;
+    if(val>=end){val=end;clearInterval(i)}
+    el.textContent=Math.floor(val).toLocaleString()+"+";
+  },18);
+}
+
+/* SCROLL REVEAL */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('show');
+  });
+},{threshold:.15});
+
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+window.onload=()=>{
+  count("clients",50);
+  count("projects",80);
+  count("views",150000);
+};
+</script>
+
 </body>
 </html>
