@@ -1,0 +1,837 @@
+/* =========================
+   WHEEDSTUDIO STYLE
+========================= */
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+:root{
+
+    --green:#B7FF00;
+    --black:#050505;
+    --dark:#0c0c0c;
+    --grey:#171717;
+    --white:#ffffff;
+    --text:#a8a8a8;
+
+}
+
+
+html{
+    scroll-behavior:smooth;
+}
+
+
+body{
+
+    background:var(--black);
+    color:white;
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+
+}
+
+
+
+/* =========================
+   CURSOR
+========================= */
+
+
+.cursor{
+
+    position:fixed;
+    width:25px;
+    height:25px;
+    border-radius:50%;
+    background:var(--green);
+    pointer-events:none;
+    mix-blend-mode:difference;
+    z-index:9999;
+    transition:.15s;
+
+}
+
+
+
+
+
+/* =========================
+   HEADER
+========================= */
+
+
+header{
+
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:30px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+    background:rgba(5,5,5,.4);
+    backdrop-filter:blur(20px);
+
+}
+
+
+
+.logo{
+
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:-2px;
+
+}
+
+
+.logo span{
+
+    color:var(--green);
+
+}
+
+
+
+nav{
+
+    display:flex;
+    gap:40px;
+
+}
+
+
+nav a{
+
+    color:white;
+    text-decoration:none;
+    font-size:15px;
+    transition:.3s;
+
+}
+
+
+nav a:hover{
+
+    color:var(--green);
+
+}
+
+
+
+.menu{
+
+    display:none;
+
+}
+
+
+
+
+
+
+/* =========================
+   HERO
+========================= */
+
+
+.hero{
+
+    min-height:100vh;
+    padding:150px 8% 80px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+
+}
+
+
+
+.hero:before{
+
+    content:"";
+    position:absolute;
+    width:600px;
+    height:600px;
+    background:var(--green);
+    filter:blur(180px);
+    opacity:.15;
+    right:-200px;
+    top:100px;
+    animation:pulse 5s infinite alternate;
+
+}
+
+
+
+@keyframes pulse{
+
+    from{
+        transform:scale(.8);
+    }
+
+    to{
+        transform:scale(1.2);
+    }
+
+}
+
+
+
+
+.hero-content{
+
+    max-width:900px;
+    z-index:2;
+
+}
+
+
+
+.small-title{
+
+    color:var(--green);
+    letter-spacing:4px;
+    font-size:13px;
+    margin-bottom:30px;
+
+}
+
+
+
+
+.hero h1{
+
+    font-size:clamp(45px,7vw,100px);
+    line-height:.95;
+    font-weight:900;
+    letter-spacing:-5px;
+
+}
+
+
+
+.hero h1 span{
+
+    color:var(--green);
+    text-shadow:
+    0 0 20px rgba(183,255,0,.5);
+
+}
+
+
+
+.hero-text{
+
+    margin-top:35px;
+    max-width:650px;
+    color:var(--text);
+    font-size:20px;
+    line-height:1.7;
+
+}
+
+
+
+
+
+.button{
+
+    display:inline-block;
+    margin-top:45px;
+    padding:18px 45px;
+    background:var(--green);
+    color:black;
+    text-decoration:none;
+    font-weight:800;
+    border-radius:50px;
+    box-shadow:
+    0 0 30px rgba(183,255,0,.4);
+    transition:.4s;
+    cursor:pointer;
+
+}
+
+
+
+.button:hover{
+
+    transform:translateY(-8px);
+    box-shadow:
+    0 0 60px rgba(183,255,0,.7);
+
+}
+
+
+
+
+
+.hero-circle{
+
+    position:absolute;
+    right:10%;
+    font-size:300px;
+    font-weight:900;
+    color:transparent;
+    -webkit-text-stroke:2px var(--green);
+    opacity:.2;
+    animation:rotate 15s linear infinite;
+
+}
+
+
+
+@keyframes rotate{
+
+from{
+transform:rotate(0);
+}
+
+to{
+transform:rotate(360deg);
+}
+
+}
+
+
+
+
+
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+
+section{
+
+    padding:120px 8%;
+
+}
+
+
+
+.section-title{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:70px;
+
+}
+
+
+
+.section-title h2{
+
+    font-size:60px;
+    font-weight:900;
+    letter-spacing:-3px;
+
+}
+
+
+
+.section-title span{
+
+    color:var(--green);
+    font-size:40px;
+
+}
+
+
+
+
+
+
+/* =========================
+ NUMBERS
+========================= */
+
+
+.numbers{
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+    background:#080808;
+
+}
+
+
+
+.numbers h2{
+
+    font-size:70px;
+    color:var(--green);
+    text-shadow:0 0 20px rgba(183,255,0,.4);
+
+}
+
+
+
+.numbers p{
+
+    color:var(--text);
+
+}
+
+
+
+
+
+
+
+
+/* =========================
+ ABOUT
+========================= */
+
+
+.about-box{
+
+    max-width:900px;
+
+}
+
+
+
+.about-box p{
+
+    color:#aaa;
+    font-size:22px;
+    line-height:1.8;
+    margin-bottom:30px;
+
+}
+
+
+
+
+
+
+/* =========================
+ SERVICES
+========================= */
+
+
+.services-grid{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+
+}
+
+
+
+.service-card{
+
+    background:
+    linear-gradient(
+    145deg,
+    #151515,
+    #080808
+    );
+
+    padding:45px;
+    border-radius:25px;
+    border:1px solid transparent;
+    transition:.5s;
+
+}
+
+
+
+.service-card:hover{
+
+    transform:translateY(-15px);
+    border-color:var(--green);
+    box-shadow:
+    0 20px 50px rgba(183,255,0,.15);
+
+}
+
+
+
+.service-card h3{
+
+    color:var(--green);
+    font-size:40px;
+
+}
+
+
+
+.service-card h4{
+
+    font-size:25px;
+    margin:20px 0;
+
+}
+
+
+
+.service-card p{
+
+    color:#999;
+    line-height:1.7;
+
+}
+
+
+
+
+
+
+/* =========================
+ LOGO SLIDER
+========================= */
+
+
+.logo-slider{
+
+    overflow:hidden;
+
+}
+
+
+.logos{
+
+    display:flex;
+    width:max-content;
+    animation:slide 20s linear infinite;
+
+}
+
+
+
+.logos div{
+
+    width:250px;
+    height:120px;
+    background:#111;
+    margin:15px;
+    border-radius:25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    font-size:22px;
+    transition:.3s;
+
+}
+
+
+
+.logos div:hover{
+
+    color:var(--green);
+    transform:scale(1.1);
+
+}
+
+
+
+@keyframes slide{
+
+from{
+transform:translateX(0);
+}
+
+to{
+transform:translateX(-50%);
+}
+
+}
+
+
+
+
+
+
+
+/* =========================
+ ARTISTS
+========================= */
+
+
+.artists{
+
+    text-align:center;
+
+}
+
+
+.artists h2{
+
+    font-size:55px;
+
+}
+
+
+
+.artists p{
+
+    color:#999;
+    font-size:22px;
+    margin:30px;
+
+}
+
+
+
+.artist-grid{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+
+}
+
+
+
+.artist-grid div{
+
+    padding:70px 20px;
+    background:#111;
+    border-radius:30px;
+    font-size:35px;
+    font-weight:900;
+    transition:.4s;
+
+}
+
+
+
+.artist-grid div:hover{
+
+    background:var(--green);
+    color:black;
+    transform:scale(1.05);
+
+}
+
+
+
+
+
+
+/* =========================
+ CONTACT
+========================= */
+
+
+.contact{
+
+    text-align:center;
+
+}
+
+
+
+.contact h2{
+
+    font-size:80px;
+
+}
+
+
+
+.contact p{
+
+    font-size:25px;
+    color:#aaa;
+    margin:30px;
+
+}
+
+
+
+
+
+footer{
+
+    padding:50px;
+    text-align:center;
+    color:#777;
+
+}
+
+
+
+
+
+
+/* =========================
+ MOBILE
+========================= */
+
+
+@media(max-width:900px){
+
+
+header{
+
+padding:25px;
+
+}
+
+
+nav{
+
+display:none;
+
+}
+
+
+
+.menu{
+
+display:block;
+
+}
+
+
+
+.menu span{
+
+display:block;
+width:30px;
+height:3px;
+background:white;
+margin:6px;
+
+}
+
+
+
+.hero{
+
+padding:130px 25px 70px;
+
+}
+
+
+
+.hero-circle{
+
+display:none;
+
+}
+
+
+
+.section-title h2{
+
+font-size:40px;
+
+}
+
+
+
+section{
+
+padding:80px 25px;
+
+}
+
+
+
+.numbers{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+
+
+.numbers h2{
+
+font-size:45px;
+
+}
+
+
+
+.services-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+
+.artist-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+
+.artists h2{
+
+font-size:40px;
+
+}
+
+
+
+.contact h2{
+
+font-size:45px;
+
+}
+
+
+
+}
+
+
+
+@media(max-width:500px){
+
+
+.numbers{
+
+grid-template-columns:1fr;
+
+}
+
+
+
+.hero h1{
+
+letter-spacing:-2px;
+
+}
+
+
+
+.hero-text{
+
+font-size:17px;
+
+}
+
+
+
+.service-card{
+
+padding:30px;
+
+}
+
+
+}
